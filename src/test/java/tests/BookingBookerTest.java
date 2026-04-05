@@ -1,10 +1,24 @@
+<<<<<<< HEAD
+=======
+
+	package tests;
+	//THIS IS BOOKING BOOKER 
+	import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+
+>>>>>>> 3a4e05e42f26f03a98db5b8d54f07103d2fdcd0c
 //This IS 
 //this is booking booker	
 
 package tests;
 	
+<<<<<<< HEAD
 	import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+=======
+	import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+
+>>>>>>> 3a4e05e42f26f03a98db5b8d54f07103d2fdcd0c
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
