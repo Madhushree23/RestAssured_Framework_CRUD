@@ -3,8 +3,7 @@
 
 package tests;
 	
-	import static io.restassured.RestAssured.given;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+	import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
@@ -18,8 +17,6 @@ import io.restassured.response.Response;
 import pojo.AuthRequestBooker;
 import pojo.BookingBooker;
 import pojo.BookingResponseDeseralization;
-import specs.Requestspec;
-import specs.Responsespec;
 import utils.APIUtilis;
 import utils.TestData;
 	
