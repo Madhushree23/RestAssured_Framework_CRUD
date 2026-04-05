@@ -1,16 +1,16 @@
-<<<<<<< HEAD
+
 	package tests;
 	//THIS IS BOOKING BOOKER 
 	import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-=======
+
 //This IS 
 //this is booking booker	
 
 package tests;
 	
 	import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
->>>>>>> main
+
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
