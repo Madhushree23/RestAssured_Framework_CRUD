@@ -1,6 +1,6 @@
 //This IS 
 //this is booking booker	
-//THIS IS 
+
 package tests;
 	
 	import static io.restassured.RestAssured.given;
