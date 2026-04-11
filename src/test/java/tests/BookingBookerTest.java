@@ -1,9 +1,6 @@
 
 package tests;
 
-//This IS 
-
-//this is booking booker	
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
