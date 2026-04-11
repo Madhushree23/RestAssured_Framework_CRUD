@@ -180,7 +180,7 @@ public class BookingBookerTest extends BaseTest {
 	int bookingId;
 
 	// 🔐 AUTH
-	@Test
+	@Test(groups = "smoke")
 	public void getToken() {
 
 		AuthRequestBooker auth = new AuthRequestBooker();
@@ -197,7 +197,7 @@ public class BookingBookerTest extends BaseTest {
 	}
 
 	// ➕ CREATE BOOKING
-	@Test(dependsOnMethods = "getToken")
+	@Test(dependsOnMethods = "getToken", groups = "smoke")
 	public void createBooking() {
 
 		BookingBooker booking = TestData.createBooking();
@@ -214,14 +214,14 @@ public class BookingBookerTest extends BaseTest {
 	}
 
 	// 🔍 GET BOOKING
-	@Test(dependsOnMethods = "createBooking")
+	@Test(dependsOnMethods = "createBooking",groups = "smoke")
 	public void getBooking() {
 
 		APIUtilis.get("/booking/" + bookingId).then().log().all().statusCode(200).body("firstname", notNullValue());
 	}
 
 	// ✏️ UPDATE BOOKING
-	@Test(dependsOnMethods = "getBooking")
+	@Test(dependsOnMethods = "getBooking",groups = "regression")
 	public void updateBooking() {
 
 		BookingBooker updated = TestData.updateBooking();
@@ -236,7 +236,7 @@ public class BookingBookerTest extends BaseTest {
 	}
 
 	// ❌ DELETE BOOKING
-	@Test(dependsOnMethods = "updateBooking")
+	@Test(dependsOnMethods = "updateBooking",groups = "regression")
 	public void deleteBooking() {
 
 		APIUtilis.delete("/booking/" + bookingId, token).then().log().all().statusCode(anyOf(is(200), is(201)));
@@ -247,7 +247,7 @@ public class BookingBookerTest extends BaseTest {
 	// ==========================
 
 	// 🚫 INVALID AUTH
-	@Test(dependsOnMethods = "deleteBooking")
+	@Test(dependsOnMethods = "deleteBooking",groups = "regression")
 	public void invalidAuth() {
 
 		AuthRequestBooker auth = new AuthRequestBooker();
@@ -258,14 +258,14 @@ public class BookingBookerTest extends BaseTest {
 	}
 
 	// 🚫 GET INVALID BOOKING
-	@Test(dependsOnMethods = "invalidAuth")
+	@Test(dependsOnMethods = "invalidAuth",groups = "regression")
 	public void getInvalidBooking() {
 
 		APIUtilis.get("/booking/999999").then().log().all().statusCode(404);
 	}
 
 	// 🚫 UPDATE WITHOUT TOKEN
-	@Test(dependsOnMethods = "getInvalidBooking")
+	@Test(dependsOnMethods = "getInvalidBooking",groups = "regression")
 	public void updateWithoutToken() {
 
 		BookingBooker updated = TestData.updateBooking();
@@ -274,14 +274,14 @@ public class BookingBookerTest extends BaseTest {
 	}
 
 	// 🚫 DELETE WITHOUT TOKEN
-	@Test(dependsOnMethods = "updateWithoutToken")
+	@Test(dependsOnMethods = "updateWithoutToken",groups = "regression")
 	public void deleteWithoutToken() {
 
 		APIUtilis.deleteWithoutToken("/booking/" + bookingId).then().log().all().statusCode(403);
 	}
 
 	// 🚫 UPDATE WITH INVALID TOKEN
-	@Test(dependsOnMethods = "deleteWithoutToken")
+	@Test(dependsOnMethods = "deleteWithoutToken",groups = "regression")
 	public void updateWithInvalidToken() {
 
 		BookingBooker updated = TestData.updateBooking();
@@ -290,14 +290,14 @@ public class BookingBookerTest extends BaseTest {
 	}
 
 	// 🚫 DELETE WITH INVALID TOKEN
-	@Test(dependsOnMethods = "updateWithInvalidToken")
+	@Test(dependsOnMethods = "updateWithInvalidToken",groups = "regression")
 	public void deleteWithInvalidToken() {
 
 		APIUtilis.deleteWithInvalidToken("/booking/" + bookingId).then().log().all().statusCode(403);
 	}
 
 	// 🚫 INVALID PAYLOAD
-	@Test(dependsOnMethods = "deleteWithInvalidToken")
+	@Test(dependsOnMethods = "deleteWithInvalidToken",groups = "regression")
 	public void createInvalidBooking() {
 
 		String invalidPayload = "{ \"firstname\": 123 }";
