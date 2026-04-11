@@ -26,6 +26,10 @@ stages {
 */
 
 
+
+
+
+
 pipeline {
     agent any
 
@@ -37,22 +41,21 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Madhushree23/RestAssured_Framework_CRUD.git/', branch: 'master'
+                git branch: 'master', url: 'https://github.com/Madhushree23/RestAssured_Framework_CRUD.git'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                sh "mvn test -Dgroups=${params.TEST_TYPE}"
+                bat "mvn test -Dgroups=${params.TEST_TYPE}"
             }
         }
-
     }
 
     post {
